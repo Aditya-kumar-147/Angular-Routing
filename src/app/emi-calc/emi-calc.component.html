@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row justify-content-md-center" style="margin-top: 20px;">
+      <div class="col">
+      <form class="form_class" #simpleForm="ngForm" (ngSubmit)="CalculateOverall()">
+        <h2 style="color: #FFA750;">EMI Calculator</h2><br><br>
+        <div class="mb-3">
+          <label for="InputAmount" class="form-label"><strong>Amount (₹)</strong></label>
+          <input type="number" [(ngModel)] = "amount" #first = "ngModel" class="form-control" name = "loanamount" id="loanamount" aria-describedby="emailHelp" placeholder="Enter the Loan Amount" required>
+          <div *ngIf="first.invalid && (first.untouched || first.dirty )">
+            <div *ngIf="first.errors?.['required']">
+              <span style="color: red;"><strong>Field is required </strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="InputROI" class="form-label"><strong>Interest Rate (%)</strong></label>
+          <input type="number" [(ngModel)] = "roi" #second = "ngModel" class="form-control" name = "roi" id="roi" aria-describedby="emailHelp" placeholder="Enter Rate of Interest" required>
+          <div *ngIf="second.invalid && (second.untouched || second.dirty )">
+            <div *ngIf="second.errors?.['required']">
+              <span style="color: red;"><strong>Field is required </strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="InputTenure" class="form-label"><strong>Tenure (Years)</strong></label>
+          <input type="number" [(ngModel)] = "tenure" #third = "ngModel" class="form-control" name = "tenure" id="tenure" placeholder="Enter the tenure" required>
+          <div *ngIf="third.invalid && (third.untouched || third.dirty )">
+            <div *ngIf="third.errors?.['required']">
+              <span style="color: red;"><strong>Field is required </strong></span>
+            </div>
+          </div>
+        </div>
+       <br><br>
+        
+        <button type="button" (click)="CalculateOverall()" class="btn btn-success">Overall</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-success">Yearly</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button"  class="btn btn-success">Monthly</button>
+        
+      </form>
+      </div>
+    <div class="col-md-auto" style="margin-top: 20px;">
+
+        <div class="overall">
+            <h3>Complete</h3> <br>
+      <h4>Loan EMI: <label id="emi">{{totalemi}}</label></h4><br>
+      <h4>Total Interest Payable: <label id="total_int">{{totalinterest}}</label></h4><br>
+      <h4>Total Payment (Principal + Interest): <label id="total_pay">{{totalpayment}}</label></h4><br>
+      </div>
+
+      </div>
+
+      </div>
+
+      </div>

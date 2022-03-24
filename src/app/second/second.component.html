@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>MyApp</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <style>
+
+        nav{
+            height: 90px;
+        }
+        .navbar-nav{
+            margin-left: 70px;
+            padding: 20px;
+        }
+        .navbar-brand{
+            margin-left: 20px;
+        }
+        .form_class{
+          margin-top: 30px;
+        }
+        .form-control{
+          width:300px;
+        }
+        body{
+          background-color: #EFEFEF;
+        }
+    </style>
+    
+    
+    </head>
+    <body>
+
+          <div class="container">
+
+            <div class="row justify-content-md-center" style="height: 675px;">
+
+              <div class="col-md-auto">
+         
+              <form class="form_class" #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
+                <div class="mb-3">
+                  <label for="InputName" class="form-label">Name</label>
+                  <input type="text" [(ngModel)] = "user.name" #name="ngModel" required minlength="5" pattern="^[a-zA-Z_ ]+$"  class="form-control" name = "inputname" id="inputname" placeholder="Enter Name">
+                  <div *ngIf="name.invalid && (name.untouched || name.dirty )">
+                    <div *ngIf="name.errors?.['required']">
+                      <strong>Name Field is required </strong>
+                    </div>
+                    <div *ngIf="name.errors?.['minlength']">
+                      <strong>Name should have at least 5 character </strong>
+                    </div>
+                    <div *ngIf="name.errors?.['pattern']">
+                      <strong>Name can have alphabets only </strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" [(ngModel)]="user.email" #email="ngModel" required minlength="5" pattern="^([a-zA-z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z]{2,4})+$"  class="form-control" name = "emaila" id="emailadd" aria-describedby="emailHelp" placeholder="Enter Email">
+                  <div *ngIf="email.invalid && (email.untouched || email.dirty )">
+                    <div *ngIf="email.errors?.['required']">
+                      <strong>Email Field is required </strong>
+                    </div>
+                    <div *ngIf="name.errors?.['minlength']">
+                      <strong>Email should have at least 5 character </strong>
+                    </div>
+                    <div *ngIf="email.errors?.['pattern']">
+                      <strong>Email pattern not matched </strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="InputCity" class="form-label">City</label>
+                  <input type="text" [(ngModel)] = "user.city" #city="ngModel" required minlength="5" pattern="^[a-zA-Z_ ]+$"  class="form-control" name = "city" id="city" placeholder="Enter City">
+                  <div *ngIf="city.invalid && (city.untouched || city.dirty )">
+                  <div *ngIf="city.errors?.['required']">
+                    <strong>City Field is required </strong>
+                  </div>
+                  <div *ngIf="city.errors?.['pattern']">
+                    <strong>City pattern not valid!</strong>
+                  </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="pincode" class="form-label">Pin Code</label>
+                  <input type="text" [(ngModel)] = "user.pincode" #pincode="ngModel" required minlength="6" pattern="^[0-9]+$" class="form-control" name = "inputpincode" id="inputpincode" placeholder="Enter Pin code">
+                  <div *ngIf="pincode.invalid && (pincode.untouched || pincode.dirty )">
+                    <div *ngIf="pincode.errors?.['required']">
+                      <strong>Pin Code is required!</strong>
+                    </div>
+                    <div *ngIf="pincode.errors?.['minlength']">
+                      <strong>Minimum 6 characters required!</strong>
+                    </div>
+                    <div *ngIf="pincode.errors?.['pattern']">
+                      <strong>Only numbers allowed!</strong>
+                    </div>
+                  </div>
+                </div>
+             
+                <button class="btn btn-primary">Submit</button>
+               
+
+              </form>
+
+              </div>
+
+              </div>
+
+          </div>
+         
+    </body>
+</html>
